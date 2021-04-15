@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Avatar from "../components/Avatar";
-import {MicrophoneIcon, DotsVerticalIcon} from "@heroicons/react/solid"
+import {MicrophoneIcon, DotsVerticalIcon} from "@heroicons/react/solid";
+import { SearchIcon } from "@heroicons/react/outline";
+import Image from "next/image";
+import Footer from "../components/Footer";
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-screen">
       <Head>
         <title>Google</title>
         <link rel="icon" href="/favicon.ico" />
@@ -20,16 +23,48 @@ export default function Home() {
 
 
           {/* Avatar */}
-          <Avatar url= "/home/sahil/Pictures/profile_pic/pic.jpg" />
+          <Avatar url= "https://lh3.googleusercontent.com/ogw/ADGmqu9bpVqTf413EuwMfLteDz8eTG7zW9Te8wX4Bz2AiKA=s32-c-mo" />
         </div>
       </header>
 
 
       {/* body */}
+      <form className="flex flex-col items-center mt-30 flex-grow w-4/5">
+        <Image 
+          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+        height={100}
+        width={272}
+        />
 
+        <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-xl 
+        lg:max-w-2xl"> 
+          <SearchIcon className="h-5 mr-3 text-gray-500" />
+          <input type="text" className="focus:outline-none flex-grow" />
+          <MicrophoneIcon className="h-5"/>
+        </div>
 
+        <div className="flex flex-col w-1/2 space-y-2 justify-center mt-8
+        sm:space-y-0 sm:flex-row sm:space-x-2"> 
+          <button className="btn">Google Search</button>
 
-      {/*footer */}
+          <button className="btn">I'm Feeling Lucky</button>
+        </div>
+
+        <div className="flex flex-center space-x-2 w-100 p-7 text-sm text-gray-700">
+          <p>Google offered in:</p> 
+          <p className="link text-blue-800">हिन्दी</p>
+          <p className="link text-blue-800">বাংলা</p>
+          <p className="link text-blue-800">తెలుగు</p>
+          <p className="link text-blue-800">मराठी</p>
+          <p className="link text-blue-800">தமிழ்</p>
+          <p className="link text-blue-800">ગુજરાતી</p>
+          <p className="link text-blue-800">ಕನ್ನಡ</p>
+          <p className="link text-blue-800">മലയാളം</p>
+          <p className="link text-blue-800">ਪੰਜਾਬੀ</p>
+        </div>
+      </form>
+
+      <Footer />
     </div>
   )
 }
