@@ -4,7 +4,25 @@ import {MicrophoneIcon, DotsVerticalIcon} from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Footer from "../components/Footer";
+import { useRef } from "react";
+import { useRouter } from "next/router";
+
 export default function Home() {
+  const router = useRouter();
+  const searchInputRef = useRef(null);
+
+  const search = e => {
+    e.preventDefault();
+    const term = searchInputRef.current.value;
+
+    if (!term) return;
+    console.log("200");
+    console.log(term);
+
+    router.push('/search?term=${term}');
+    console.log(term);
+  
+  }
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <Head>
@@ -23,7 +41,7 @@ export default function Home() {
 
 
           {/* Avatar */}
-          <Avatar url= "https://lh3.googleusercontent.com/ogw/ADGmqu9bpVqTf413EuwMfLteDz8eTG7zW9Te8wX4Bz2AiKA=s32-c-mo" />
+          <Avatar url="https://lh3.googleusercontent.com/ogw/ADGmqu9bpVqTf413EuwMfLteDz8eTG7zW9Te8wX4Bz2AiKA=s32-c-mo" />
         </div>
       </header>
 
@@ -39,15 +57,21 @@ export default function Home() {
         <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-xl 
         lg:max-w-2xl"> 
           <SearchIcon className="h-5 mr-3 text-gray-500" />
-          <input type="text" className="focus:outline-none flex-grow" />
+
+          <input 
+          ref={searchInputRef}
+          type="text" 
+          className="focus:outline-none flex-grow" 
+          />
+
           <MicrophoneIcon className="h-5"/>
         </div>
 
         <div className="flex flex-col w-1/2 space-y-2 justify-center mt-8
         sm:space-y-0 sm:flex-row sm:space-x-2"> 
-          <button className="btn">Google Search</button>
+          <button onclick={search} className="btn">Google Search</button>
 
-          <button className="btn">I'm Feeling Lucky</button>
+          <button onclick={search} className="btn">I'm Feeling Lucky</button>
         </div>
 
         <div className="flex flex-center space-x-2 w-100 p-7 text-sm text-gray-700">
