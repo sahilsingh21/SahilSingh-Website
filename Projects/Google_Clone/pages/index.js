@@ -16,11 +16,9 @@ export default function Home() {
     const term = searchInputRef.current.value;
 
     if (!term) return;
-    console.log("200");
-    console.log(term);
 
     router.push('/search?term=${term}');
-    console.log(term);
+
   
   }
   return (
